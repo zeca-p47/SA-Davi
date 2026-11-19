@@ -1,0 +1,55 @@
+
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<h2>Controle de Produção</h2>
+
+<form method="POST" class="formulario">
+
+    <label>Produto:</label>
+
+    <select name="produto_id" required>
+        <option value="">Selecione um produto</option>
+
+        {% for produto in produtos %}
+            <option value="{{ produto[0] }}">
+                {{ produto[1] }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <label>Quantidade produzida:</label>
+    <input type="number" name="quantidade" min="1" required>
+
+    <button class="botao" type="submit">
+        Registrar Produção
+    </button>
+
+</form>
+
+<h2>Histórico de Produção</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Produto</th>
+        <th>Quantidade</th>
+        <th>Data</th>
+    </tr>
+
+    {% for registro in registros %}
+    <tr>
+        <td>{{ registro[0] }}</td>
+        <td>{{ registro[1] }}</td>
+        <td>{{ registro[2] }}</td>
+        <td>{{ registro[3] }}</td>
+    </tr>
+    {% else %}
+    <tr>
+        <td colspan="4">Nenhuma produção registrada.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

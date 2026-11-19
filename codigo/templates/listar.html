@@ -1,0 +1,51 @@
+
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<h2>{{ titulo }}</h2>
+
+<a class="botao" href="/novo/{{ modulo }}">+ Novo Cadastro</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            {% for label in labels %}
+                <th>{{ label }}</th>
+            {% endfor %}
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for registro in registros %}
+        <tr>
+            <td>{{ registro[0] }}</td>
+
+            {% for valor in registro[1:] %}
+                <td>{{ valor }}</td>
+            {% endfor %}
+
+            <td>
+                <a href="/editar/{{ modulo }}/{{ registro[0] }}">Editar</a>
+
+                <form method="POST"
+                      action="/excluir/{{ modulo }}/{{ registro[0] }}"
+                      style="display:inline"
+                      onsubmit="return confirm('Deseja excluir?')">
+                    <button class="excluir">Excluir</button>
+                </form>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="{{ campos|length + 2 }}">
+                Nenhum registro encontrado.
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

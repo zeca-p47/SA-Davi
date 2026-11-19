@@ -1,0 +1,14 @@
+ChocoTech/
+│
+├── app.py
+├── banco.py
+├── choco.db
+│
+├── templates/
+│   ├── base.html
+│   ├── index.html
+│   ├── listar.html
+│   └── formulario.html
+│
+└── static/
+    └── style.css

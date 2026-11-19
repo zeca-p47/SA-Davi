@@ -1,0 +1,49 @@
+
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<h2>Painel de Controle</h2>
+<p>Bem-vindo ao sistema de gerenciamento da fábrica!</p>
+
+<div class="cards">
+
+    <div class="card">
+        <h3>Produtos</h3>
+        <h2>{{ dados.produtos }}</h2>
+        <a href="/produtos">Gerenciar</a>
+    </div>
+
+    <div class="card">
+        <h3>Ingredientes</h3>
+        <h2>{{ dados.ingredientes }}</h2>
+        <a href="/ingredientes">Gerenciar</a>
+    </div>
+
+    <div class="card">
+        <h3>Funcionários</h3>
+        <h2>{{ dados.funcionarios }}</h2>
+        <a href="/funcionarios">Gerenciar</a>
+    </div>
+
+    <div class="card">
+        <h3>Clientes</h3>
+        <h2>{{ dados.clientes }}</h2>
+        <a href="/clientes">Gerenciar</a>
+    </div>
+
+    <div class="card">
+        <h3>Produções</h3>
+        <h2>{{ dados.producao }}</h2>
+        <a href="/producao">Gerenciar</a>
+    </div>
+
+    <div class="card">
+        <h3>Vendas</h3>
+        <h2>{{ dados.vendas }}</h2>
+    </div>
+
+</div>
+
+{% endblock %}
+

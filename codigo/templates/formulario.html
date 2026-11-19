@@ -1,0 +1,30 @@
+
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<h2>{{ titulo }}</h2>
+
+<form method="POST" class="formulario">
+
+    {% for campo in campos %}
+        <label>{{ labels[loop.index0] }}</label>
+
+        <input
+            type="{% if campo == 'preco' or campo == 'quantidade' %}number{% else %}text{% endif %}"
+            name="{{ campo }}"
+            value="{{ registro[loop.index] if registro else '' }}"
+            {% if campo in ['preco', 'quantidade'] %}
+                step="any"
+            {% endif %}
+            required
+        >
+    {% endfor %}
+
+    <button type="submit" class="botao">Salvar</button>
+
+    <a href="/{{ modulo }}">Cancelar</a>
+
+</form>
+
+{% endblock %}
